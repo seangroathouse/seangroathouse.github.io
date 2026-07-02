@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 3,
+  "lessonTitle": "The Definite Integral",
+  "questions": [
+    {
+      "id": "q-int-def-ex3",
+      "stem": [
+        {
+          "type": "text",
+          "latex": "Write the definite integral $\\displaystyle\\int_1^4 \\sqrt{x}\\,dx$ as a limit of a right-endpoint Riemann sum."
+        }
+      ],
+      "parts": [
+        {
+          "id": "q-int-def-ex3-a",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "Which expression is the limit definition of the definite integral $\\displaystyle\\int_a^b f(x)\\,dx$?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$\\displaystyle\\int_a^b f(x) \\,dx = \\lim_{n \\to \\infty} \\sum_{k=1}^n f(x_k^*)\\,\\Delta x$"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-int-def-ex3-a-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\displaystyle\\sum_{k=1}^n f(x_k^*)\\,\\Delta x$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "This is a Riemann sum, but the definite integral takes the limit as $n \\to \\infty$."
+                }
+              ]
+            },
+            {
+              "id": "q-int-def-ex3-a-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\displaystyle\\lim_{n \\to \\infty} \\sum_{k=1}^n f(x_k^*)$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "Each height must be multiplied by the width $\\Delta x$ of a subinterval."
+                }
+              ]
+            },
+            {
+              "id": "q-int-def-ex3-a-c3",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\displaystyle\\lim_{n \\to \\infty} \\sum_{k=1}^n f(x_k^*)\\,\\Delta x$"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The definite integral is the limit of a Riemann sum. In the summation, each height $f(x_k^*)$ is multiplied by the width $\\Delta x$."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q-int-def-ex3-b",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "Splitting $[1,4]$ into $n$ equal subintervals, what is the width $\\Delta x$ of each subinterval?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$\\Delta x = \\dfrac{3}{n}$"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-int-def-ex3-b-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\displaystyle\\Delta x = \\dfrac{3}{n}$"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "$\\Delta x = \\dfrac{b-a}{n} = \\dfrac{4-1}{n} = \\dfrac{3}{n}$."
+                }
+              ]
+            },
+            {
+              "id": "q-int-def-ex3-b-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\displaystyle\\Delta x = \\dfrac{4}{n}$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "Use $\\Delta x = \\dfrac{b-a}{n}$ with $a = 1$ and $b = 4$, not just $b$."
+                }
+              ]
+            },
+            {
+              "id": "q-int-def-ex3-b-c3",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\displaystyle\\Delta x = \\dfrac{n}{3}$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The width is $\\dfrac{b-a}{n}$, so $n$ belongs in the denominator."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q-int-def-ex3-c",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "Which formula gives the right endpoint $x_k^*$ for a right-endpoint Riemann sum?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$x_k^* = a + k\\,\\Delta x$"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-int-def-ex3-c-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$x_k^* = a + (k-1)\\,\\Delta x$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "That formula gives the left endpoints of each subinterval."
+                }
+              ]
+            },
+            {
+              "id": "q-int-def-ex3-c-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$x_k^* = a + \\left(k - \\tfrac{1}{2}\\right)\\Delta x$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "That formula gives the midpoints of each subinterval."
+                }
+              ]
+            },
+            {
+              "id": "q-int-def-ex3-c-c3",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$x_k^* = a + k\\,\\Delta x$"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "Right endpoints take $k$ steps of size $\\Delta x$ starting from $a$."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q-int-def-ex3-d",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "Substituting $a = 1$ and $\\Delta x = \\dfrac{3}{n}$, what are the right endpoints $x_k^* = a + k\\,\\Delta x$?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$x_k^* = 1 + \\dfrac{3k}{n}$"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-int-def-ex3-d-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$x_k^* = \\dfrac{3k}{n}$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "Don't forget to add the left endpoint $a = 1$."
+                }
+              ]
+            },
+            {
+              "id": "q-int-def-ex3-d-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$x_k^* = 1 + \\dfrac{3(k-1)}{n}$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "That uses the left-endpoint formula $a + (k-1)\\,\\Delta x$."
+                }
+              ]
+            },
+            {
+              "id": "q-int-def-ex3-d-c3",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$x_k^* = 1 + \\dfrac{3k}{n}$"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "$x_k^* = 1 + k \\cdot \\dfrac{3}{n} = 1 + \\dfrac{3k}{n}$."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q-int-def-ex3-e",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "Putting this all together, what is $\\displaystyle\\int_1^4 \\sqrt{x}\\,dx$ written as a limit of a Riemann sum?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$\\displaystyle\\int_1^4 \\sqrt{x} \\,dx = \\lim_{n \\to \\infty} \\sum_{k=1}^n \\sqrt{1 + \\dfrac{3k}{n}}\\cdot \\dfrac{3}{n}$"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-int-def-ex3-e-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\displaystyle\\sum_{k=1}^n \\sqrt{1 + \\dfrac{3k}{n}}\\cdot \\dfrac{3}{n}$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "This is the Riemann sum. Now take the limit as $n \\to \\infty$ to get the definite integral."
+                }
+              ]
+            },
+            {
+              "id": "q-int-def-ex3-e-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\displaystyle\\lim_{n \\to \\infty} \\sum_{k=1}^n \\sqrt{1 + \\dfrac{3k}{n}}\\cdot \\dfrac{3}{n}$"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "Substitute $x_k^* = 1 + \\dfrac{3k}{n}$ into $f(x) = \\sqrt{x}$ for the height, and multiply by $\\Delta x = \\dfrac{3}{n}$."
+                }
+              ]
+            },
+            {
+              "id": "q-int-def-ex3-e-c3",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\displaystyle\\lim_{n \\to \\infty} \\sum_{k=1}^n \\Bigl(1 + \\dfrac{3k}{n}\\Bigr) \\cdot \\dfrac{3}{n}$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The height is $f(x_k^*) = \\sqrt{x_k^*} = \\sqrt{1 + \\frac{3k}{n}}$, rather than $1 + \\frac{3k}{n}$."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "conclusion": [
+        {
+          "type": "text",
+          "latex": "Putting it all together, $\\displaystyle\\int_1^4 \\sqrt{x}\\,dx = \\lim_{n \\to \\infty} \\sum_{k=1}^n \\sqrt{1 + \\dfrac{3k}{n}}\\cdot \\dfrac{3}{n}.$"
+        }
+      ]
+    }
+  ]
+}

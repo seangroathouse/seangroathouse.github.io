@@ -1,0 +1,217 @@
+\DocumentMetadata{
+  lang        = en-US,
+  pdfversion  = 2.0,
+  pdfstandard = ua-2,
+  tagging     = on,
+  tagging-setup = {math/setup=mathml-SE}
+}
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm, xcolor, graphicx, colortbl}
+\usepackage{siunitx}
+
+% SciencePlots defaults for matplotlib-style exports
+\usepackage{caption}
+\captionsetup{labelformat=empty}
+
+\usepackage{geometry}
+\geometry{
+	letterpaper,
+	total={6.5in, 9in},
+	left=1in,
+	top=1in,
+}
+
+\usepackage{fontspec}
+\setmainfont{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+\setmonofont{Libertinus Mono} 
+
+\usepackage{hyperref}
+
+\parskip = 0.125in
+\parindent = 0.0in
+
+\everymath{\displaystyle}
+
+% Integral Evaluated at | operator, \Eval{anti-derivative}{a}{b}
+\newcommand*\Eval[3]{\left.#1\right\rvert_{#2}^{#3}}
+
+% Equals with LH above it for L'Hopital's Rule
+\newcommand\eqLH{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny LH}}}{=}}}
+\newcommand{\eqwith}[1]{\mathrel{\overset{\scriptstyle\text{#1}}{=}}}
+
+% Force limits-style subscripts on \lim.
+\renewcommand{\lim}{\mathop{\mathrm{lim}}\limits}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\CC}{\mathbb{C}}
+
+% Based on Paul Tol's Vibrant color scheme 
+% https://sronpersonalpages.nl/~pault/
+\definecolor{VibrantBlue}{HTML}{0077bb}
+\definecolor{VibrantCyan}{HTML}{33bbee}
+\definecolor{VibrantTeal}{HTML}{009988}
+\definecolor{VibrantOrange}{HTML}{ED6F26}
+\definecolor{VibrantRed}{HTML}{cc3311}
+\definecolor{VibrantMagenta}{HTML}{ee3377}
+\definecolor{VibrantGray}{HTML}{757575}
+\definecolor{TextBlue}{HTML}{0077bb}
+\definecolor{TextTeal}{HTML}{008575}
+\definecolor{TextOrange}{HTML}{C85014}
+\definecolor{TextMagenta}{HTML}{E71361}
+\definecolor{GradRed}{HTML}{DC050C}
+
+% Pre-notes intentionally leave certain content blank, to be filled in on the post-notes.
+% For screen readers, we mark these blank spaces as artifacts so that they are not read aloud in the pre-notes.
+\newcommand{\mathvidartifact}[1]{%
+  \ifdefined\tagpdfmc
+    \tagpdfmc{artifact}#1\tagpdfmcend
+  \else
+    #1%
+  \fi
+}
+
+% Styled macros for Definitions, Theorems, and Corollaries.
+\newcommand{\msColor}[2]{\textcolor{#1}{#2}}
+\newcommand{\msDef}[1]{\textbf{\msColor{TextBlue}{Definition}}\if\relax\detokenize{#1}\relax\textbf{\msColor{black}{:}}\else\textbf{\;\msColor{black}{#1:}}\fi}
+\newcommand{\msThm}[1]{\textbf{\msColor{TextTeal}{Theorem}}\if\relax\detokenize{#1}\relax\textbf{\msColor{black}{:}}\else\textbf{\;\msColor{black}{#1:}}\fi}
+\newcommand{\msThmNamed}[1]{\if\relax\detokenize{#1}\relax\textbf{\msColor{TextTeal}{:}}\else\textbf{\msColor{TextTeal}{#1:}}\fi}
+\newcommand{\msCor}[1]{\textbf{\msColor{TextTeal}{Corollary}}\if\relax\detokenize{#1}\relax\textbf{\msColor{black}{:}}\else\textbf{\;\msColor{black}{#1:}}\fi}
+\newcommand{\msProof}{\textbf{\msColor{TextTeal}{Proof: }}}
+\newcommand{\msAlgorithm}[1]{\textbf{\msColor{TextOrange}{#1: }}}
+\newcommand{\msReadAs}{\textbf{\msColor{TextMagenta}{Read Aloud As: }}}
+\newcommand{\msRead}{\textbf{\msColor{TextMagenta}{Read Aloud: }}}
+\newcommand{\msCareful}{\textbf{\msColor{GradRed}{Careful: }}}
+
+\AddToDocumentProperties[hyperref]{pdftitle}{The Definite Integral Pre-notes}
+\AddToDocumentProperties[hyperref]{pdfauthor}{Sean Groathouse}
+\AddToDocumentProperties[hyperref]{pdfsubject}{Calculus I}
+\AddToDocumentProperties[hyperref]{pdfkeywords}{net area, net area bounded by a curve, definite integral, Riemann sum}
+\newcommand{\prenotephantom}[1]{\mathvidartifact{\begingroup\color{white}#1\endgroup}}
+
+\begin{document}
+\begingroup\fontsize{16.0}{19.2}\selectfont
+\begin{center}
+\textbf{The Definite Integral}
+\end{center}
+\endgroup
+
+In this lesson, we will explore net area bounded by a curve, define the definite integral, and practice matching definite integrals to limits of Riemann sums.
+
+So far, we have approximated the area under a non-negative function $f$ on $[a,b]$. 
+If $f$ takes positive and negative values, then Riemann sums approximate the \textbf{net area} bounded by the graph of $f$ and the $x$-axis.
+
+\vspace{-0.5cm}
+
+\begin{center}\includegraphics[width=2.75in,alt={Graph of y equals cosine x on the interval from 0 to three halves pi. The region from x equals 0 to pi over 2 lies above the x-axis and is shaded as positive area, while the region from pi over 2 to three halves pi lies below the x-axis and is shaded as negative area.}]{assets/plot_pre_0.png}\end{center}
+
+\vspace{-0.5cm}
+
+\msDef{Net Area} 
+The net area bounded by the graph of $f$ and the $x$-axis on $[a,b]$ is the area above the $x$-axis minus the area below the $x$-axis.
+
+\textbf{Example 1: } 
+Let $f(x) = x^3 - 3x^2$. 
+Approximate 
+the net area 
+bounded by the graph of $f$ 
+and the $x$-axis
+on the interval 
+$[0, 4]$ 
+using 4 
+right-endpoint rectangles.
+
+\textbf{Solution: } On $[0,4]$ with $n=4$ rectangles, the width is \prenotephantom{$\Delta x = \dfrac{b-a}{n} = \dfrac{4-0}{4} = 1$.} \\[0.1cm]
+The right endpoints are \prenotephantom{$x_k^* = a + k \Delta x = 0 + k \cdot 1 = k$ for $k = 1, 2, 3, 4$.}
+
+\vspace{-0.5cm}
+
+\noindent\makebox[\linewidth][l]{\begin{minipage}[t]{0.48\linewidth}
+\vspace{0pt}
+\setlength{\abovedisplayskip}{0pt}\setlength{\abovedisplayshortskip}{0pt}
+\begin{center}\includegraphics[width=2.75in,alt={Graph of f of x equals x cubed minus 3 x squared on the interval from 0 to 4 with 4 right-endpoint rectangles. The rectangles on the subintervals from 0 to 2 lie below the x-axis. The rectangle on the subinterval from 2 to 3 has height 0 and is not visible. The rectangle on the subinterval from 3 to 4 rises above the x-axis.}]{assets/plot_pre_1.png}\end{center}
+
+\end{minipage}%
+\hspace*{0.04\linewidth}%
+\begin{minipage}[t]{0.48\linewidth}
+\vspace{0pt}
+\setlength{\abovedisplayskip}{0pt}\setlength{\abovedisplayshortskip}{0pt}
+\begin{center}\includegraphics[width=2.75in,alt={Graph of f of x equals x cubed minus 3 x squared on the interval from 0 to 4 with 16 right-endpoint rectangles. The rectangles on the subintervals from 0 to 2.75 lie below the x-axis. The rectangle on the subinterval from 2.75 to 3 has height 0 and is not visible. The rectangles on the subinterval from 3 to 4 rises above the x-axis.}]{assets/plot_pre_2.png}\end{center}
+
+\end{minipage}}
+
+\vspace{-0.5cm}
+
+\begin{align*}
+\phantom{\,} & \phantom{\sum_{k=1}^4  \underbrace{f(k)}_{\text{height}} \cdot \underbrace{1}_{\text{width}} = f(1) + f(2) + f(3) + f(4)}\\
+\phantom{\,} & \phantom{= (1^3 - 3\cdot 1^2) + (2^3 - 3\cdot 2^2) + (3^3 - 3\cdot 3^2) + (4^3 - 3\cdot 4^2)}\\
+\phantom{\,} & \phantom{= -2 - 4 + 0 + 16 = \boxed{10}}
+\end{align*}
+
+\prenotephantom{Rectangles below the $x$-axis count as negative area. The net area is approximately $\boxed{10}$. \\[0.1cm]
+Using $n = 16$ right-endpoint rectangles gives a closer approximation of the net area.}
+
+\newpage
+
+The Riemann sum $\sum_{k=1}^n f(x_k^*) \Delta x$ approximates the net area bounded by the graph of $f$ and the $x$-axis on $[a,b]$. 
+Taking the limit as $n \to \infty$, the Riemann sum approaches the exact net area.
+
+\msDef{Definite Integral}
+The definite integral of $f$ on $[a,b]$ is defined by
+\[ \int_a^b f(x) \, dx = \lim_{n \to \infty} \sum_{k=1}^n f(x_k^*) \Delta x, \]
+if the limit exists and is independent of the choice of $x_k^*$. 
+If the definite integral exists, we say that $f$ is \textbf{integrable} on $[a,b]$.
+
+\begin{itemize}
+\item $a$ and $b$ are the \textbf{limits of integration}
+\item $f(x)$ is the \textbf{integrand}
+\item $x$ is the \textbf{variable of integration}
+\end{itemize}
+
+\msThm{} If $f$ is continuous on $[a,b]$, or is bounded with finitely many discontinuities on $[a,b]$, then $f$ is integrable on $[a,b]$.
+
+\vfill
+
+\textbf{Example 2: } 
+The expression 
+$\lim_{n \to \infty} \sum_{k=1}^n \Bigl((x_k^*)^2 + 5x_k^* - 1 \Bigr) \cdot \frac{3}{n}$ 
+is a limit 
+of a Riemann sum 
+for a function $f$ 
+on $[0,3]$.
+Find the function $f$ 
+and write the expression 
+as a definite integral.
+
+\prenotephantom{\textbf{Solution: } Compare the expression to the definition $\displaystyle\int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_{k=1}^n f(x_k^*)\,\Delta x$. \\[0.1cm]
+The width is $\Delta x = \dfrac{3}{n} = \dfrac{3-0}{n}$, which matches the interval $[0,3]$. \\[0.1cm]
+The height is $f(x_k^*) = (x_k^*)^2 + 5x_k^* - 1$, so $f(x) = x^2 + 5x - 1$.}
+
+\begin{align*}
+\phantom{\lim_{n \to \infty} \sum_{k=1}^n \Bigl((x_k^*)^2 + 5x_k^* - 1\Bigr)\cdot \frac{3}{n} = \int_0^3 \bigl(x^2 + 5x - 1\bigr) \,dx}
+\end{align*}
+
+\vfill
+
+\newpage
+
+In the last example, we wrote a limit of a Riemann sum as a definite integral.
+Next, try this interactive problem on the website to go in the other direction: writing a definite integral as a limit of a Riemann sum.
+
+\textbf{Interactive Problem 1: } 
+Write the definite integral $\int_1^4 \sqrt{x} \,dx$ as a limit of a right-endpoint Riemann sum. 
+
+\begin{enumerate}[item-label={(\alph*)}]
+    \item The definition of the definite integral is $\int_a^b f(x) \,dx = \prenotephantom{\lim_{n \to \infty} \sum_{k=1}^n f(x_k^*) \Delta x}$ \\[0.5cm]
+    \item The width of each subinterval is $\Delta x = \prenotephantom{ \frac{b-a}{n} = \frac{4-1}{n} = \frac{3}{n}}$ \\[0.5cm]
+    \item The formula for right-endpoints is $x_k^* = \prenotephantom{a + k \Delta x}$ \\[0.5cm]
+    \item The right-endpoints evaluate to $x_k^* = \prenotephantom{1 + \frac{3k}{n}}$ \\[0.5cm]
+    \item Putting this all together, 
+    \[ \int_1^4 \sqrt{x} \,dx = \prenotephantom{\lim_{n \to \infty} \sum_{k=1}^n f(x_k^*) \Delta x = \lim_{n \to \infty} \sum_{k=1}^n \sqrt{1 + \frac{3k}{n}} \cdot \frac{3}{n}} \]
+\end{enumerate}
+
+
+\end{document}

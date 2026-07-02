@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Definite Integral</title>
+  <link rel="stylesheet" href="../engine/mathvid-interactive.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"]],
+        displayMath: [["\\[", "\\]"]],
+        processEnvironments: true
+      },
+      options: {
+        menuOptions: {
+          settings: {
+            enrich: true,
+            speech: true,
+            braille: true,
+            assistiveMml: true,
+            inTabOrder: false
+          }
+        }
+      },
+      startup: {
+        typeset: false
+      }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+  <script defer src="../engine/mathvid-interactive.js"></script>
+</head>
+<body class="mvi-body">
+  <a class="mvi-skip-link" href="#content">Skip to content</a>
+  <div class="mvi-container">
+    <header class="mvi-lesson-header">
+      <h1>The Definite Integral</h1>
+      <p class="mvi-lesson-meta">Calculus I</p>
+    </header>
+
+    <nav class="mvi-resources" aria-label="Lesson notes and downloads">
+      <h2>Notes</h2>
+      <ul class="mvi-resources-list mvi-resources-list--primary">
+
+  <li>
+      <a class="mvi-resource-card" href="the-definite-integral-prenotes.pdf">
+        <span class="mvi-resource-title">Pre-notes</span>
+        <span class="mvi-resource-meta">PDF for following along before or during the video</span>
+      </a>
+    </li>
+    <li>
+      <a class="mvi-resource-card" href="the-definite-integral-postnotes.pdf">
+        <span class="mvi-resource-title">Post-notes</span>
+        <span class="mvi-resource-meta">PDF with completed notes after the lesson</span>
+      </a>
+    </li>
+
+  </ul>
+
+  <details class="mvi-source-disclosure">
+
+  <summary>Additional accessible formats and source files</summary>
+
+  <div class="mvi-source-panel">
+
+  <p>Most students should use the PDF notes above. These optional source files are provided for students who use accessibility tools that work better with LaTeX source, or for instructors who want to edit or recompile the notes.</p>
+
+  <ul class="mvi-resources-list mvi-resources-list--source">
+
+  <li>
+          <a href="the-definite-integral-prenotes-source.zip" aria-label="Pre-notes LaTeX source archive">Download pre-notes LaTeX source (.zip)</a>
+        </li>
+        <li>
+          <a href="the-definite-integral-postnotes-source.zip" aria-label="Post-notes LaTeX source archive">Download post-notes LaTeX source (.zip)</a>
+        </li>
+
+  </ul>
+
+  </div>
+
+  </details>
+    </nav>
+
+    <section class="mvi-video" aria-labelledby="mvi-video-heading">
+      <h2 id="mvi-video-heading">Lesson video</h2>
+      <div class="mvi-video-placeholder"><p>The lesson video will be embedded here. Add the Kaltura embed code. </p></div>
+    </section>
+
+    <main id="content" class="mvi-main">
+      <section class="mvi-interactive">
+        <div id="mathvid-questions"></div>
+      </section>
+      <script type="application/json" id="mathvid-data">{"schemaVersion": 3, "lessonTitle": "The Definite Integral", "questions": [{"id": "q-int-def-ex3", "stem": [{"type": "text", "latex": "Write the definite integral $\\displaystyle\\int_1^4 \\sqrt{x}\\,dx$ as a limit of a right-endpoint Riemann sum."}], "parts": [{"id": "q-int-def-ex3-a", "type": "multiple_choice", "prompt": [{"type": "text", "latex": "Which expression is the limit definition of the definite integral $\\displaystyle\\int_a^b f(x)\\,dx$?"}], "summary": [{"type": "text", "latex": "$\\displaystyle\\int_a^b f(x) \\,dx = \\lim_{n \\to \\infty} \\sum_{k=1}^n f(x_k^*)\\,\\Delta x$"}], "choices": [{"id": "q-int-def-ex3-a-c1", "content": [{"type": "text", "latex": "$\\displaystyle\\sum_{k=1}^n f(x_k^*)\\,\\Delta x$"}], "correct": false, "feedback": [{"type": "text", "latex": "This is a Riemann sum, but the definite integral takes the limit as $n \\to \\infty$."}]}, {"id": "q-int-def-ex3-a-c2", "content": [{"type": "text", "latex": "$\\displaystyle\\lim_{n \\to \\infty} \\sum_{k=1}^n f(x_k^*)$"}], "correct": false, "feedback": [{"type": "text", "latex": "Each height must be multiplied by the width $\\Delta x$ of a subinterval."}]}, {"id": "q-int-def-ex3-a-c3", "content": [{"type": "text", "latex": "$\\displaystyle\\lim_{n \\to \\infty} \\sum_{k=1}^n f(x_k^*)\\,\\Delta x$"}], "correct": true, "feedback": [{"type": "text", "latex": "The definite integral is the limit of a Riemann sum. In the summation, each height $f(x_k^*)$ is multiplied by the width $\\Delta x$."}]}]}, {"id": "q-int-def-ex3-b", "type": "multiple_choice", "prompt": [{"type": "text", "latex": "Splitting $[1,4]$ into $n$ equal subintervals, what is the width $\\Delta x$ of each subinterval?"}], "summary": [{"type": "text", "latex": "$\\Delta x = \\dfrac{3}{n}$"}], "choices": [{"id": "q-int-def-ex3-b-c1", "content": [{"type": "text", "latex": "$\\displaystyle\\Delta x = \\dfrac{3}{n}$"}], "correct": true, "feedback": [{"type": "text", "latex": "$\\Delta x = \\dfrac{b-a}{n} = \\dfrac{4-1}{n} = \\dfrac{3}{n}$."}]}, {"id": "q-int-def-ex3-b-c2", "content": [{"type": "text", "latex": "$\\displaystyle\\Delta x = \\dfrac{4}{n}$"}], "correct": false, "feedback": [{"type": "text", "latex": "Use $\\Delta x = \\dfrac{b-a}{n}$ with $a = 1$ and $b = 4$, not just $b$."}]}, {"id": "q-int-def-ex3-b-c3", "content": [{"type": "text", "latex": "$\\displaystyle\\Delta x = \\dfrac{n}{3}$"}], "correct": false, "feedback": [{"type": "text", "latex": "The width is $\\dfrac{b-a}{n}$, so $n$ belongs in the denominator."}]}]}, {"id": "q-int-def-ex3-c", "type": "multiple_choice", "prompt": [{"type": "text", "latex": "Which formula gives the right endpoint $x_k^*$ for a right-endpoint Riemann sum?"}], "summary": [{"type": "text", "latex": "$x_k^* = a + k\\,\\Delta x$"}], "choices": [{"id": "q-int-def-ex3-c-c1", "content": [{"type": "text", "latex": "$x_k^* = a + (k-1)\\,\\Delta x$"}], "correct": false, "feedback": [{"type": "text", "latex": "That formula gives the left endpoints of each subinterval."}]}, {"id": "q-int-def-ex3-c-c2", "content": [{"type": "text", "latex": "$x_k^* = a + \\left(k - \\tfrac{1}{2}\\right)\\Delta x$"}], "correct": false, "feedback": [{"type": "text", "latex": "That formula gives the midpoints of each subinterval."}]}, {"id": "q-int-def-ex3-c-c3", "content": [{"type": "text", "latex": "$x_k^* = a + k\\,\\Delta x$"}], "correct": true, "feedback": [{"type": "text", "latex": "Right endpoints take $k$ steps of size $\\Delta x$ starting from $a$."}]}]}, {"id": "q-int-def-ex3-d", "type": "multiple_choice", "prompt": [{"type": "text", "latex": "Substituting $a = 1$ and $\\Delta x = \\dfrac{3}{n}$, what are the right endpoints $x_k^* = a + k\\,\\Delta x$?"}], "summary": [{"type": "text", "latex": "$x_k^* = 1 + \\dfrac{3k}{n}$"}], "choices": [{"id": "q-int-def-ex3-d-c1", "content": [{"type": "text", "latex": "$x_k^* = \\dfrac{3k}{n}$"}], "correct": false, "feedback": [{"type": "text", "latex": "Don't forget to add the left endpoint $a = 1$."}]}, {"id": "q-int-def-ex3-d-c2", "content": [{"type": "text", "latex": "$x_k^* = 1 + \\dfrac{3(k-1)}{n}$"}], "correct": false, "feedback": [{"type": "text", "latex": "That uses the left-endpoint formula $a + (k-1)\\,\\Delta x$."}]}, {"id": "q-int-def-ex3-d-c3", "content": [{"type": "text", "latex": "$x_k^* = 1 + \\dfrac{3k}{n}$"}], "correct": true, "feedback": [{"type": "text", "latex": "$x_k^* = 1 + k \\cdot \\dfrac{3}{n} = 1 + \\dfrac{3k}{n}$."}]}]}, {"id": "q-int-def-ex3-e", "type": "multiple_choice", "prompt": [{"type": "text", "latex": "Putting this all together, what is $\\displaystyle\\int_1^4 \\sqrt{x}\\,dx$ written as a limit of a Riemann sum?"}], "summary": [{"type": "text", "latex": "$\\displaystyle\\int_1^4 \\sqrt{x} \\,dx = \\lim_{n \\to \\infty} \\sum_{k=1}^n \\sqrt{1 + \\dfrac{3k}{n}}\\cdot \\dfrac{3}{n}$"}], "choices": [{"id": "q-int-def-ex3-e-c1", "content": [{"type": "text", "latex": "$\\displaystyle\\sum_{k=1}^n \\sqrt{1 + \\dfrac{3k}{n}}\\cdot \\dfrac{3}{n}$"}], "correct": false, "feedback": [{"type": "text", "latex": "This is the Riemann sum. Now take the limit as $n \\to \\infty$ to get the definite integral."}]}, {"id": "q-int-def-ex3-e-c2", "content": [{"type": "text", "latex": "$\\displaystyle\\lim_{n \\to \\infty} \\sum_{k=1}^n \\sqrt{1 + \\dfrac{3k}{n}}\\cdot \\dfrac{3}{n}$"}], "correct": true, "feedback": [{"type": "text", "latex": "Substitute $x_k^* = 1 + \\dfrac{3k}{n}$ into $f(x) = \\sqrt{x}$ for the height, and multiply by $\\Delta x = \\dfrac{3}{n}$."}]}, {"id": "q-int-def-ex3-e-c3", "content": [{"type": "text", "latex": "$\\displaystyle\\lim_{n \\to \\infty} \\sum_{k=1}^n \\Bigl(1 + \\dfrac{3k}{n}\\Bigr) \\cdot \\dfrac{3}{n}$"}], "correct": false, "feedback": [{"type": "text", "latex": "The height is $f(x_k^*) = \\sqrt{x_k^*} = \\sqrt{1 + \\frac{3k}{n}}$, rather than $1 + \\frac{3k}{n}$."}]}]}], "conclusion": [{"type": "text", "latex": "Putting it all together, $\\displaystyle\\int_1^4 \\sqrt{x}\\,dx = \\lim_{n \\to \\infty} \\sum_{k=1}^n \\sqrt{1 + \\dfrac{3k}{n}}\\cdot \\dfrac{3}{n}.$"}]}]}</script>
+    </main>
+
+    <footer class="mvi-footer">
+      <p>These materials were created by Sean Groathouse, funded and supported by the Mathematics Department at the University of Utah. If you have any questions, corrections, or feedback about these materials please feel free to email <a href="mailto:sean@math.utah.edu">sean@math.utah.edu</a>.</p>
+    </footer>
+  </div>
+</body>
+</html>

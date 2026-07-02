@@ -1,0 +1,674 @@
+/*
+ * MathVid interactive-question + lesson-page styles.
+ *
+ * Goals: WCAG 2.2 friendly. Color is never the sole indicator (icons + text
+ * carry status), focus is always visible, layout reflows for 200%/400% zoom and
+ * mobile portrait, and targets are comfortably sized. No hover-only content.
+ */
+
+:root {
+  --mvi-fg: #1a1a1a;
+  --mvi-bg: #ffffff;
+  --mvi-muted: #4a4a4a;
+  --mvi-border: #6b6b6b;
+  --mvi-accent: #1f5fbf;
+  --mvi-accent-fg: #ffffff;
+  --mvi-focus: #0b3d91;
+  --mvi-correct-fg: #14532d;
+  --mvi-correct-bg: #e3f5e9;
+  --mvi-correct-border: #1b7a43;
+  --mvi-incorrect-fg: #7a1620;
+  --mvi-incorrect-bg: #fde7ea;
+  --mvi-incorrect-border: #b3261e;
+  --mvi-neutral-fg: #1f3a5f;
+  --mvi-neutral-bg: #e8eff7;
+  --mvi-neutral-border: #1f5fbf;
+  --mvi-radius: 0.5rem;
+  --mvi-space: 1rem;
+  --mvi-target: 2.75rem; /* ~44px minimum interactive target */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mvi-fg: #f2f2f2;
+    --mvi-bg: #121417;
+    --mvi-muted: #c9c9c9;
+    --mvi-border: #9aa0a6;
+    --mvi-accent: #7aa7ff;
+    --mvi-accent-fg: #06122b;
+    --mvi-focus: #9ec1ff;
+    --mvi-correct-fg: #b8f0cd;
+    --mvi-correct-bg: #11321f;
+    --mvi-correct-border: #3fbf72;
+    --mvi-incorrect-fg: #ffc7cd;
+    --mvi-incorrect-bg: #3a161a;
+    --mvi-incorrect-border: #ff6b75;
+    --mvi-neutral-fg: #cfe0fb;
+    --mvi-neutral-bg: #16243a;
+    --mvi-neutral-border: #7aa7ff;
+  }
+}
+
+/* ---- Page layout (lesson template) ---- */
+
+.mvi-body {
+  margin: 0;
+  color: var(--mvi-fg);
+  background: var(--mvi-bg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.mvi-skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.5rem 0.75rem;
+  background: var(--mvi-accent);
+  color: var(--mvi-accent-fg);
+  border-radius: var(--mvi-radius);
+  transition: top 0.15s ease-in-out;
+}
+
+.mvi-skip-link:focus {
+  top: 0.5rem;
+}
+
+.mvi-container {
+  width: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  box-sizing: border-box;
+}
+
+.mvi-lesson-header h1 {
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+
+.mvi-lesson-meta {
+  color: var(--mvi-muted);
+  margin: 0 0 var(--mvi-space);
+}
+
+.mvi-video {
+  margin: var(--mvi-space) 0;
+}
+
+.mvi-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: var(--mvi-radius);
+  overflow: hidden;
+}
+
+.mvi-video-frame iframe,
+.mvi-video-frame video,
+.mvi-video-frame embed,
+.mvi-video-frame object {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.mvi-video-placeholder {
+  border: 2px dashed var(--mvi-border);
+  border-radius: var(--mvi-radius);
+  padding: var(--mvi-space);
+  color: var(--mvi-muted);
+}
+
+.mvi-resources-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.mvi-resources-list--primary {
+  gap: 1rem;
+}
+
+.mvi-resource-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: var(--mvi-target);
+  min-width: min(100%, 14rem);
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--mvi-accent);
+  border-radius: var(--mvi-radius);
+  color: inherit;
+  text-decoration: none;
+  background: transparent;
+}
+
+.mvi-resource-card:hover {
+  background: color-mix(in srgb, var(--mvi-accent) 8%, transparent);
+}
+
+.mvi-resource-card:focus-visible {
+  outline: 3px solid var(--mvi-focus);
+  outline-offset: 2px;
+}
+
+.mvi-resource-title {
+  font-weight: 600;
+  color: var(--mvi-accent);
+}
+
+.mvi-resource-meta {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--mvi-muted);
+}
+
+.mvi-source-disclosure {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--mvi-border);
+  padding-top: 0.75rem;
+}
+
+.mvi-source-disclosure > summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--mvi-target);
+  padding: 0.35rem 0.15rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--mvi-muted);
+  cursor: pointer;
+  list-style: none;
+}
+
+.mvi-source-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.mvi-source-disclosure > summary::before {
+  content: "▸";
+  display: inline-block;
+  width: 1.1rem;
+  margin-right: 0.35rem;
+  transition: transform 0.15s ease-in-out;
+}
+
+.mvi-source-disclosure[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.mvi-source-disclosure > summary:hover {
+  color: var(--mvi-fg);
+}
+
+.mvi-source-disclosure > summary:focus-visible {
+  outline: 3px solid var(--mvi-focus);
+  outline-offset: 2px;
+  border-radius: var(--mvi-radius);
+}
+
+.mvi-source-panel {
+  margin-top: 0.75rem;
+  max-width: 42rem;
+}
+
+.mvi-source-panel p {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--mvi-muted);
+}
+
+.mvi-resources-list--source {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+.mvi-resources-list--source a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--mvi-target);
+  padding: 0.15rem 0;
+  color: var(--mvi-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.mvi-resources-list--source a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.mvi-resources-list--source a:focus-visible {
+  outline: 3px solid var(--mvi-focus);
+  outline-offset: 2px;
+  border-radius: 0.15rem;
+}
+
+.mvi-footer {
+  color: var(--mvi-muted);
+  border-top: 1px solid var(--mvi-border);
+  margin-top: 2rem;
+  padding-top: 1rem;
+  font-size: 0.9375rem;
+}
+
+.mvi-footer a {
+  color: var(--mvi-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.mvi-footer a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ---- Questions ---- */
+
+.mvi-question {
+  border: 1px solid var(--mvi-border);
+  border-radius: var(--mvi-radius);
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  margin: 1.5rem 0;
+}
+
+.mvi-question-heading {
+  font-size: 1.3rem;
+  margin: 0 0 0.75rem;
+}
+
+.mvi-stem {
+  margin-bottom: var(--mvi-space);
+}
+
+.mvi-text {
+  margin: 0 0 0.75rem;
+}
+
+.mvi-math {
+  margin: 0.5rem 0;
+  overflow-x: auto;
+}
+
+.mvi-figure {
+  margin: 0.75rem 0;
+  text-align: center;
+}
+
+.mvi-figure-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.mvi-parts-accordion {
+  margin: 0;
+}
+
+.mvi-part {
+  border-top: 1px solid var(--mvi-border);
+  padding-top: var(--mvi-space);
+  margin-top: var(--mvi-space);
+}
+
+/* ---- Accordion part headers ---- */
+
+.mvi-part-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.mvi-part-toggle {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  flex: 1 1 auto;
+  min-height: var(--mvi-target); /* WCAG 2.2 target size */
+  margin: 0;
+  padding: 0.5rem 0.25rem;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  color: var(--mvi-fg);
+  background: transparent;
+  border: 0;
+  border-radius: var(--mvi-radius);
+  cursor: pointer;
+}
+
+.mvi-part-label {
+  flex: 0 0 auto;
+}
+
+/* Chevron rotates with state; decorative, so hidden from assistive tech. */
+.mvi-part-toggle::before {
+  content: "\25B8"; /* right-pointing triangle */
+  flex: 0 0 auto;
+  font-size: 0.9em;
+  color: var(--mvi-muted);
+  transition: transform 0.15s ease-in-out;
+}
+
+.mvi-part-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+/* Future parts: visible and focusable for discoverability, but inert. */
+.mvi-part-toggle[aria-disabled="true"] {
+  color: var(--mvi-muted);
+  cursor: default;
+  font-weight: 600;
+}
+
+/* State badge. State is conveyed by text (plus a decorative icon), never by
+   color alone. */
+.mvi-part-status {
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--mvi-muted);
+  white-space: nowrap;
+}
+
+.mvi-part-status::before {
+  margin-right: 0.3rem;
+}
+
+.mvi-part.is-not-started .mvi-part-status::before {
+  content: "\25CB"; /* open circle */
+}
+
+.mvi-part.is-current .mvi-part-status {
+  color: var(--mvi-accent);
+}
+
+.mvi-part.is-current .mvi-part-status::before {
+  content: "\25CF"; /* filled circle */
+}
+
+.mvi-part.is-complete .mvi-part-status {
+  color: var(--mvi-correct-fg);
+}
+
+.mvi-part.is-complete .mvi-part-status::before {
+  content: "\2713"; /* check mark */
+}
+
+.mvi-part-summary {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 400;
+  color: var(--mvi-muted);
+  font-size: 0.95rem;
+}
+
+/* Nothing to show until a part is complete, and never for the in-progress
+   part (so the open panel, not the summary, carries the answer). */
+.mvi-part-summary:empty {
+  display: none;
+}
+
+.mvi-part-summary .mvi-text,
+.mvi-part-summary .mvi-math {
+  display: inline;
+  margin: 0;
+}
+
+.mvi-part-panel {
+  padding-top: 0.25rem;
+}
+
+.mvi-choices {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.mvi-prompt {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  padding: 0;
+}
+
+/* The whole card is a <label>, so the entire row is the click/tap target. */
+.mvi-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--mvi-target);
+  border: 1px solid var(--mvi-border);
+  border-radius: var(--mvi-radius);
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+
+.mvi-radio {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+}
+
+.mvi-choice-content {
+  flex: 1 1 auto;
+}
+
+.mvi-choice-mark {
+  flex: 0 0 auto;
+  width: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.mvi-choice.is-correct {
+  border-color: var(--mvi-correct-border);
+  background: var(--mvi-correct-bg);
+}
+
+.mvi-choice.is-incorrect {
+  border-color: var(--mvi-incorrect-border);
+  background: var(--mvi-incorrect-bg);
+}
+
+.mvi-choice.is-correct .mvi-choice-mark::before {
+  content: "\2713";
+  color: var(--mvi-correct-fg);
+}
+
+.mvi-choice.is-incorrect .mvi-choice-mark::before {
+  content: "\2717";
+  color: var(--mvi-incorrect-fg);
+}
+
+/* ---- Fill in the blank ---- */
+
+.mvi-fillblank-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mvi-input {
+  min-height: var(--mvi-target);
+  font-size: 1rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--mvi-border);
+  border-radius: var(--mvi-radius);
+  background: var(--mvi-bg);
+  color: var(--mvi-fg);
+  max-width: 12rem;
+}
+
+/* ---- Buttons ---- */
+
+.mvi-check,
+.mvi-next {
+  min-height: var(--mvi-target);
+  min-width: var(--mvi-target);
+  padding: 0.5rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--mvi-accent-fg);
+  background: var(--mvi-accent);
+  border: 1px solid transparent;
+  border-radius: var(--mvi-radius);
+  cursor: pointer;
+}
+
+.mvi-check:hover,
+.mvi-next:hover {
+  filter: brightness(0.94);
+}
+
+.mvi-part-footer {
+  margin-top: var(--mvi-space);
+}
+
+/* ---- Feedback ---- */
+
+.mvi-feedback {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--mvi-neutral-border);
+  border-radius: var(--mvi-radius);
+}
+
+.mvi-feedback.is-correct {
+  border-color: var(--mvi-correct-border);
+  background: var(--mvi-correct-bg);
+  color: var(--mvi-correct-fg);
+}
+
+.mvi-feedback.is-incorrect {
+  border-color: var(--mvi-incorrect-border);
+  background: var(--mvi-incorrect-bg);
+  color: var(--mvi-incorrect-fg);
+}
+
+.mvi-feedback.is-neutral {
+  border-color: var(--mvi-neutral-border);
+  background: var(--mvi-neutral-bg);
+  color: var(--mvi-neutral-fg);
+}
+
+.mvi-feedback-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.5rem;
+  margin: 0;
+}
+
+.mvi-feedback-explanation {
+  font-weight: 400;
+}
+
+.mvi-feedback-status .mvi-figure {
+  flex: 1 1 100%;
+  margin: 0.35rem 0 0;
+}
+
+.mvi-feedback-status .mvi-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.mvi-show-solution {
+  min-height: var(--mvi-target);
+  min-width: var(--mvi-target);
+  padding: 0.5rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--mvi-accent);
+  background: transparent;
+  border: 1px solid var(--mvi-accent);
+  border-radius: var(--mvi-radius);
+  cursor: pointer;
+}
+
+.mvi-show-solution:hover {
+  background: color-mix(in srgb, var(--mvi-accent) 10%, transparent);
+}
+
+.mvi-show-solution:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* ---- Focus visibility (never removed) ---- */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+label:focus-visible,
+.mvi-part-toggle:focus-visible,
+.mvi-question-heading:focus-visible,
+.mvi-part-heading:focus-visible,
+.mvi-conclusion-heading:focus-visible {
+  outline: 3px solid var(--mvi-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Headings/toggles receive programmatic focus on advance; keep an outline but
+   no jump. */
+.mvi-question-heading,
+.mvi-part-heading,
+.mvi-part-toggle,
+.mvi-conclusion-heading {
+  scroll-margin-top: 1rem;
+}
+
+/* ---- Small screens ---- */
+
+@media (max-width: 30rem) {
+  .mvi-fillblank-controls {
+    align-items: stretch;
+  }
+
+  .mvi-input {
+    max-width: 100%;
+  }
+
+  .mvi-check,
+  .mvi-next,
+  .mvi-show-solution {
+    width: 100%;
+  }
+
+  .mvi-resources-list {
+    flex-direction: column;
+  }
+
+  .mvi-resource-card {
+    width: 100%;
+  }
+}
+
+/* ---- High-contrast / forced colors ---- */
+
+@media (forced-colors: active) {
+  .mvi-choice,
+  .mvi-feedback,
+  .mvi-question {
+    border: 1px solid CanvasText;
+  }
+}

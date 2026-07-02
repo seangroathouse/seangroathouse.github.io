@@ -1,0 +1,582 @@
+{
+  "schemaVersion": 3,
+  "lessonTitle": "Evaluating Definite Integrals using Graphs and Geometry",
+  "questions": [
+    {
+      "id": "q-geom-int-ip1",
+      "stem": [
+        {
+          "type": "text",
+          "latex": "Use geometry to evaluate $\\displaystyle\\int_{-3}^3 \\sqrt{9 - x^2}\\,dx$."
+        },
+        {
+          "type": "image",
+          "src": "assets/plot_ip1_semicircle_plot.png",
+          "alt": "Graph of y equals the square root of 9 minus x squared on the interval from negative 3 to 3. The region under the upper semicircle is shaded. The curve is the top half of a circle centered at the origin with radius 3.",
+          "width": "3in",
+          "intrinsicWidth": 900,
+          "intrinsicHeight": 623
+        }
+      ],
+      "parts": [
+        {
+          "id": "q-geom-int-ip1-a",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "On the graph, the definite integral $\\displaystyle\\int_{-3}^3 \\sqrt{9-x^2}\\,dx$ is the"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$\\displaystyle\\int_{-3}^3 \\sqrt{9-x^2}\\,dx$ is the area of the semicircle"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-geom-int-ip1-a-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "area of the semicircle"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The shaded region under $y = \\sqrt{9-x^2}$ on $[-3,3]$ is the upper half of a circle with radius $3$."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip1-a-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "negative area of the semicircle"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The semicircle lies entirely above the $x$-axis, so its area counts as positive net area."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip1-a-c3",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "area of the full circle"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The region between $y = \\sqrt{9-x^2}$ and the $x$-axis on $[-3,3]$ is the upper half of the circle, rather than the entire circle."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q-geom-int-ip1-b",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "What is the formula for the area of a semicircle with radius $r$?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "Area of a semicircle: $\\dfrac{1}{2}\\pi r^2$"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-geom-int-ip1-b-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$2\\pi r$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "That is the circumference of a full circle, not the area of a semicircle."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip1-b-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\pi r^2$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "That is the area of a full circle. A semicircle is half of that."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip1-b-c3",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\dfrac{1}{2} \\pi r^2$"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "A semicircle is half of a circle, so its area is $\\dfrac{1}{2}\\pi r^2$."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q-geom-int-ip1-c",
+          "type": "fill_blank_integer",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "What is the radius of the semicircle shown on the graph?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$r = 3$"
+            }
+          ],
+          "answer": 3,
+          "feedback": {
+            "correct": [
+              {
+                "type": "text",
+                "latex": "The semicircle extends from $x = -3$ to $x = 3$, so the radius is $3$."
+              }
+            ],
+            "incorrect": [
+              {
+                "type": "text",
+                "latex": "One radius of the semicircle extends from $(0,0)$ to $(3,0)$. What is the length of this radius?"
+              }
+            ],
+            "byAnswer": {}
+          }
+        },
+        {
+          "id": "q-geom-int-ip1-d",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "Putting this all together, what is $\\displaystyle\\int_{-3}^3 \\sqrt{9-x^2}\\,dx$ equal to?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$\\displaystyle\\int_{-3}^3 \\sqrt{9-x^2}\\,dx = \\dfrac{9}{2}\\pi$"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-geom-int-ip1-d-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$-\\frac{9}{2} \\pi$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The semicircle lies above the $x$-axis, so the net area is positive."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip1-d-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$\\frac{9}{2} \\pi$"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "With $r = 3$, the area is $\\dfrac{1}{2}\\pi(3)^2 = \\dfrac{9}{2}\\pi$."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip1-d-c3",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$9\\pi$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "$9\\pi$ is the area of the full circle with radius $3$. The integral gives the area of the upper half of the circle only."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "conclusion": [
+        {
+          "type": "text",
+          "latex": "Putting it all together, $\\displaystyle\\int_{-3}^3 \\sqrt{9-x^2}\\,dx = \\frac{9}{2}\\pi.$"
+        }
+      ]
+    },
+    {
+      "id": "q-geom-int-ip2",
+      "stem": [
+        {
+          "type": "text",
+          "latex": "The graph shows the areas $A_1=3$, $A_2=5$, and $A_3=6$ of regions bounded by the graph of $y = f(x)$ and the $x$-axis. We will use the graph to find $\\displaystyle\\int_0^b f(x)\\,dx$ and $\\displaystyle\\int_a^c f(x)\\,dx$."
+        },
+        {
+          "type": "image",
+          "src": "assets/plot_ip2_labeled_areas_plot.png",
+          "alt": "Graph of a curved function y equals f of x from x equals 0 to points a, b, and c along the x-axis. The region from 0 to a is shaded above the x-axis and labeled A sub 1 equals 3. The region from a to b is shaded below the x-axis and labeled A sub 2 equals 5. The region from b to c is shaded above the x-axis and labeled A sub 3 equals 6.",
+          "width": "4.5in",
+          "intrinsicWidth": 1350,
+          "intrinsicHeight": 934
+        }
+      ],
+      "parts": [
+        {
+          "id": "q-geom-int-ip2-a",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "Which areas are involved in finding $\\displaystyle\\int_0^b f(x)\\,dx$?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$\\displaystyle\\int_0^b f(x)\\,dx$ involves the areas $A_1$ and $A_2$"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-geom-int-ip2-a-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$A_1$ and $A_2$"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The lower limit is $0$ and upper limit is $b$, so the areas $A_1$ and $A_2$ are included."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip2-a-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$A_2$ and $A_3$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The lower limit is $0$, so the first area $A_1$ is included."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip2-a-c3",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$A_1$, $A_2$, and $A_3$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The upper limit is $b$, so the third area $A_3$ is not included."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q-geom-int-ip2-b",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "Does $A_1$ count as positive or negative area?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$A_1$ counts as positive area"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-geom-int-ip2-b-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "positive area"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "$A_1$ lies above the $x$-axis, so it counts as positive area."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip2-b-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "negative area"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "Regions above the $x$-axis count as positive area in a definite integral."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q-geom-int-ip2-c",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "Does $A_2$ count as positive or negative area?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$A_2$ counts as negative area"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-geom-int-ip2-c-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "positive area"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "$A_2$ lies below the $x$-axis, so it counts as negative area."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip2-c-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "negative area"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "Regions below the $x$-axis count as negative area in a definite integral."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q-geom-int-ip2-d",
+          "type": "fill_blank_integer",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "Putting this together, what is $\\displaystyle\\int_0^b f(x)\\,dx$ equal to?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$\\displaystyle\\int_0^b f(x)\\,dx = A_1 - A_2 = -2$"
+            }
+          ],
+          "answer": -2,
+          "feedback": {
+            "correct": [
+              {
+                "type": "text",
+                "latex": "With $A_1 = 3$ above the axis and $A_2 = 5$ below the axis, the net area is $3 - 5 = -2$."
+              }
+            ],
+            "incorrect": [
+              {
+                "type": "text",
+                "latex": "The net area is $A_1 - A_2$, because $A_1$ is above the $x$-axis and $A_2$ is below the $x$-axis."
+              }
+            ],
+            "byAnswer": {}
+          }
+        },
+        {
+          "id": "q-geom-int-ip2-e",
+          "type": "multiple_choice",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "Which areas are involved in finding $\\displaystyle\\int_a^c f(x)\\,dx$?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$\\displaystyle\\int_a^c f(x)\\,dx$ involves the areas $A_2$ and $A_3$"
+            }
+          ],
+          "choices": [
+            {
+              "id": "q-geom-int-ip2-e-c1",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$A_1$ and $A_2$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The lower limit is $a$, so the first area $A_1$ is not included."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip2-e-c2",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$A_2$ and $A_3$"
+                }
+              ],
+              "correct": true,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The lower limit is $a$ and upper limit is $c$, so the areas $A_2$ and $A_3$ are included."
+                }
+              ]
+            },
+            {
+              "id": "q-geom-int-ip2-e-c3",
+              "content": [
+                {
+                  "type": "text",
+                  "latex": "$A_1$, $A_2$, and $A_3$"
+                }
+              ],
+              "correct": false,
+              "feedback": [
+                {
+                  "type": "text",
+                  "latex": "The lower limit is $a$, so the first area $A_1$ is not included."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q-geom-int-ip2-f",
+          "type": "fill_blank_integer",
+          "prompt": [
+            {
+              "type": "text",
+              "latex": "What is $\\displaystyle\\int_a^c f(x)\\,dx$ equal to?"
+            }
+          ],
+          "summary": [
+            {
+              "type": "text",
+              "latex": "$\\displaystyle\\int_a^c f(x)\\,dx = -A_2 + A_3 = 1$"
+            }
+          ],
+          "answer": 1,
+          "feedback": {
+            "correct": [
+              {
+                "type": "text",
+                "latex": "The net area is $-A_2 + A_3 = -5 + 6 = 1$, because $A_2$ is below the $x$-axis and $A_3$ is above the $x$-axis."
+              }
+            ],
+            "incorrect": [
+              {
+                "type": "text",
+                "latex": "The net area is $-A_2 + A_3$, because $A_2$ is below the $x$-axis and $A_3$ is above the $x$-axis."
+              }
+            ],
+            "byAnswer": {}
+          }
+        }
+      ],
+      "conclusion": [
+        {
+          "type": "text",
+          "latex": "$\\displaystyle\\int_0^b f(x)\\,dx = A_1 - A_2 = 3 - 5 = -2$ and $\\displaystyle\\int_a^c f(x)\\,dx = -A_2 + A_3 = -5 + 6 = 1$."
+        }
+      ]
+    }
+  ]
+}
